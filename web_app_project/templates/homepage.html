@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+
+{% block title %} Homepage {% endblock %}
+
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+    Welcome: {{user.username}}<br>
+    Logout: click <a href="/logout">here</a>
+{% else %}
+    <p><h2>Create an account with us and post your stories</h2>></p>
+{% endif %}
+
+
+{% for blog in blog %}
+<ul>
+    <li>
+        <h1>{{ blog.headline }}</h1>
+        <h4>{{ blog.time_created }}</h4>
+        <h2>{{ blog.content }}</h2>
+    </li>
+</ul>
+{% endfor %}
+
+{% endblock %}
+
