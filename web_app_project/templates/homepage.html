@@ -2,25 +2,40 @@
 
 {% block title %} Homepage {% endblock %}
 
-
 {% block content %}
 
-
 {% if user.is_authenticated %}
-    Welcome: {{user.username}}<br>
-    Logout: click <a href="/logout">here</a>
+    <table border="0">
+        <tr>
+            <th><h2>Active User: {{ user.username }}</h2></th>
+        </tr>
+        <tr>
+            <td><a href="/space">Your Space</a></td>
+            <td><a href="/logging_out">logout</a></td>
+        </tr>
+    </table>
+    <hr>
 {% else %}
-    <p><h2>Create an account with us and post your stories</h2>></p>
+    <p>
+        <h2>To post stories, <a style="text-decoration: none;" href="logging_in">Login or Signup</a> with us</h2>
+    </p>
 {% endif %}
 
 
+
 {% for blog in blog %}
+
 <ul>
-    <li>
-        <h1>{{ blog.headline }}</h1>
-        <h4>{{ blog.time_created }}</h4>
-        <h2>{{ blog.content }}</h2>
-    </li>
+    <hr>
+        <a style="text-decoration: none; color: white;" href="/post/{{blog.id}}">
+            <li>
+                <h1>{{ blog.headline }}</h1>
+                <h4>posted on: {{ blog.time_created }}</h4>
+                <h2>{{ blog.content|truncatewords:'5'}}</h2>
+                <br>
+            </li>
+        </a>
+    <hr>
 </ul>
 {% endfor %}
 

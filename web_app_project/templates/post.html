@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+
+{% block title %} Homepage {% endblock %}
+
+{% block content %}
+
+<br>
+<p>
+    {% if user.is_authenticated %}
+        <h1>{{ blog.headline }}</h1>
+
+        <hr>
+        <h2>{{ blog.content}}</h2>
+
+        <h4>posted on: {{ blog.time_created }}</h4>
+
+
+    {% else %}
+        <p><a style="text-decoration: none;" href="/logging_in">Log in</a> to view full stories</p>
+    {% endif %}
+        <p>
+            <br>
+            <h5><a href="/homepage">back to homepage</a></h5>
+        </p>
+</p>
+
+{% endblock %}
+

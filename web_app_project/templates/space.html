@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+<h3>
+    Create and post your own stories
+    <hr>
+    <br>
+</h3>
+
+
+<form action="space", method="post">
+    {% csrf_token %}
+
+    Headline: <input type="text", name="headline">
+    <br>
+    <br>
+    <br>
+
+    <p>Content: </p>
+    <textarea name="content", cols="60", rows="5"></textarea>
+
+    <br>
+    <input type="submit">
+    
+    
+</form>
+
+{% endblock %}
